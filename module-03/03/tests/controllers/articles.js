@@ -6,10 +6,10 @@ var expect = chai.expect;
 chai.use(chaiHttp);
 
 
-describe('Articles', function() {
+describe('Articles Controller (Version 1)', function() {
   it('should list ALL articles on /articles GET');
   it('should list a SINGLE article on /articles/:title GET');
-  it('should add a SINGLE blob on /articles POST');
-  it('should update a SINGLE blob on /articles/:title PUT');
-  it('should delete a SINGLE blob on /articles/:title DELETE');
+  it('should add a SINGLE article on /articles POST');
+  it('should update a SINGLE article on /articles/:title PUT');
+  it('should delete a SINGLE article on /articles/:title DELETE');
 });

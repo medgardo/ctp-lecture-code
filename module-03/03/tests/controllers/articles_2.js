@@ -6,7 +6,7 @@ var expect = chai.expect;
 chai.use(chaiHttp);
 
 
-describe('Articles', () => {
+describe('Articles Controller (Version 2)', () => {
   it('should list ALL articles on /articles GET', (done) => {
     chai.request(server)
       .get('/articles')
@@ -22,12 +22,11 @@ describe('Articles', () => {
       .end((err,res) => {
         expect(res.status).to.equal(200);
         expect(res).to.be.html;
-        // console.log("===> ", res.text);
         expect(res.text).to.include(' article: ');
         done();
       });
   });
-  it('should add a SINGLE blob on /articles POST');
-  it('should update a SINGLE blob on /articles/:title PUT');
-  it('should delete a SINGLE blob on /articles/:title DELETE');
+  it('should add a SINGLE article on /articles POST');
+  it('should update a SINGLE article on /articles/:title PUT');
+  it('should delete a SINGLE article on /articles/:title DELETE');
 });

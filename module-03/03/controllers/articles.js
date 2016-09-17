@@ -1,21 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
-// middleware that is specific to this router
+// middleware that is specific to this router (We did not cover this in class)
+// It applies to all routes defined in this controller
 router.use(function timeLog(req, res, next) {
-  console.log('Articles Controller :: Access Time: ', Date.now());
+  console.log('Articles Controller :: Time: ', Date.now());
   next();
 });
 
 
-// define the home page route
+// define the root articles route
 router.get('/', function(req, res) {
   res.send('Articles home page');
 });
 
-// define the about route
-router.get('/:slug', function(req, res) {
-  res.send('This is article: ' + req.params.slug);
+// define the specific article route
+router.get('/:title', function(req, res) {
+  res.send('This is article: ' + req.params.title);
 });
 
 module.exports = router;
