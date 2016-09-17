@@ -1,76 +1,91 @@
-# Module 03 - Lecture Notes
+# Module 03 - Lecture Code
 
-## Install Node for your OS
 
-On Windows:
-- Install the Node package from nodejs.org
+In lecture we did 3 live coding sessions. Each session's code is within directories 01, 02, and 03. Environment setup instructions, and basic commands are explained below:
 
-On Linux:
 
-- Use nvm:
-    + Install using this guide: https://github.com/medgardo/ctp2016/blob/master/lecture-notes/00.2_2016-07-12/nvm.md
+## Setting up your environment
 
-## 01 - What is Express
+### For Windows users:
 
-<!-- Go from examples 1-5, explaining http verbs, url matching, route params, query params -->
+* Make sure you have Node.js 6.x installed. (I recommend version 6.5.0 or newer)
+* Open the Node.js command prompt (or command prompt of your choice)
+* Make or Change into the directory that you want to work in
+    - _i.e._ `cd ctp`
 
-### Create your first Node project
+### For Vagrant users
+
+* Use an existing Ubuntu vagrant box or create a new one
+    - Making a new Vagrant box
+        1. Make or change into a directory you want to work in
+        3. `cd ctp/lecture-code`
+        4. `vagrant init ubuntu/trusty64`
+        5. Make sure you edit line 25 and open a port (port 8000 for these lecture notes)
+        6. `vagrant up`
+        7. `vagrant ssh`
+        8. `cd /vagrant`
+        9. Install Node.js (I recommend using NVM you can follow [these instructions](https://github.com/medgardo/ctp2016/blob/master/lecture-notes/00.2_2016-07-12/nvm.md))
+
+
+## 01 - Creating a new Express.js app and Basic Routing
+
+### Starting a project
 
 ```
-npm init
+$ npm init 
 ```
 
-- Answer questions.
-    + Make the entry point `app.js`
-- Edit package.json
-- create your `app.js` file
-    + Add `console.log('hello world')`
-- Run application `node app.js`
+This command creates a `package.json` to manage our projects dependencies and scripts.
 
+> **NOTE:** This command does not create any javascript files for you. You should create your own `app.js` file.
 
-### Make your first Express project
+You should add a _start_ task to your application. The scripts section will look like this.
 
-```
-npm init
-npm install --save express
-```
-
-- edit package.json
-- create `app.js`
-
-```javascript
-const express = require('express');
-const app = express();
-
-app.get('/', function(req, res){
-  res.send('hello world');
-});
-
-app.listen(8000);
+```json
+  ...
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  ...
 ```
 
 
-## 02 - Using Controllers
+### Add Express.js to your project
 
-<!-- how we separate code into multiple files. explain middleware for logging. This is a per-controller middleware. They can also be per-application or per-action -->
+```
+$ npm install --save express
+```
 
-Install `nodemon` to make life easier!
+This command installs express to my `node_modules` directory and the `--save` option adds it to my `package.json` file as a dependency of my application.
+
+
+## 02 - Nodemon and Using Controllers
+
+### Install `nodemon` to make life easier!
 
 ```
 npm install --save nodemon
 ```
 
-Make a controllers folder.
+Update your _start_ script in `package.json` to use nodemon for auto-reloading of your project code.
 
-Create a controller by calling `router = express.Router()`
+```json
+  "scripts": {
+    "start": "node_modules/.bin/nodemon -L app.js",
+    ...
+  }
+```
 
-Add your 'actions'
 
-Export it using `modules.exports = router` 
+### Making controllers
 
-## 03 - Writing BDD tests to design our URL/Route Space
+Just create a `controllers` directory, and add your javascript files there
 
-<!-- This is an integration test, but it allows us to test our route design -->
+In your `app.js` load in the controller with a `require(...)` call.
+
+
+## 03 - Adding a Testing Framework
 
 Install Mocha/Chai/Chai-http
 
@@ -80,8 +95,8 @@ npm install --save chai
 npm install --save chai-http
 ```
 
-Create a `tests/` folder
+Create a `tests/` directory.
 
-Create the first controller test.
+Save your test files to the `tests/` directory. Aim to match your test filenames and directory structure to your application filenames and directory structure.
 
 
