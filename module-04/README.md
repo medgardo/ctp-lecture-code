@@ -6,7 +6,7 @@ In lecture we did 1 live coding session demonstrating how to add a Postgres data
 
 ## 01 - Adding Sequelize and creating models for our Apps
 
-[Sequelize]() is an ORM library for accessing relational databases through models in our node.js applications. In the instructions below, we assume a Postgres database has already been setup.
+[Sequelize](http://docs.sequelizejs.com/en/v3/docs/models-usage/) is an ORM library for accessing relational databases through models in our node.js applications. In the instructions below, we assume a Postgres database has already been setup. If you don't have postgres installed see instructions here: [https://github.com/medgardo/ctp2016/blob/master/guides/postgres.md](https://github.com/medgardo/ctp2016/blob/master/guides/postgres.md).
 
 ### Adding sequelize and sequelize-cli
 
@@ -22,6 +22,8 @@ We then proceed to run the `init` command so that sequelize generates some base 
 ```
 $ sequelize init
 ```
+
+Next, you should modify the file `config/config.json` with your database connection parameters.
 
 ### Creating models in our project
 
