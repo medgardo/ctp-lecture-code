@@ -4,7 +4,7 @@
   "description": "an mvc structured app",
   "scripts": {
     "start": "node_modules/.bin/nodemon -L app.js",
-    "test": "node_modules/mocha/bin/mocha --recursive tests/"
+    "test": "NODE_ENV=test node_modules/mocha/bin/mocha --recursive tests/"
   },
   "author": "",
   "license": "ISC",
