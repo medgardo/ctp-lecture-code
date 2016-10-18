@@ -22,6 +22,27 @@ router.get('/', function(req, res) {
     });
 });
 
+// Process a submitted form
+router.post('/', function(req,res) {
+  console.log(req.body);
+  models.Author.create({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    bio: req.body.bio
+  }).then(function (author) {
+    res.redirect('/authors')
+  }).catch(function (e) {
+    res.send('ERROR: creating an author');
+  })
+});
+
+// Display the Form
+router.get('/new', function (req,res) {
+  res.render('authors/new');
+});
+
+
+
 // define the specific author route
 router.get('/:id', function(req, res) {
   models.Author.findById(req.params.id)
@@ -35,18 +56,5 @@ router.get('/:id', function(req, res) {
 });
 
 
-// VERY BAD CODE. This was only for quick demonstration purposes
-// Next lecture we will look at using HTML forms and POST requests
-router.get('/new/:first_name/:last_name/:bio', function (req,res) {
-  models.Author.create({
-    first_name: req.params.first_name,
-    last_name: req.params.last_name,
-    bio: req.params.bio
-  }).then(function (author) {
-    res.redirect('/authors')
-  }).catch(function (e) {
-    res.send('ERROR: creating an author');
-  })
-});
 
 module.exports = router;
