@@ -32,7 +32,8 @@ router.post('/', function(req,res) {
   }).then(function (author) {
     res.redirect('/authors')
   }).catch(function (e) {
-    res.send('ERROR: creating an author');
+    res.render('authors/new', {errors: e.errors});
+    // res.json(e);
   })
 });
 

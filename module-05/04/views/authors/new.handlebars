@@ -4,6 +4,15 @@
 </div>
 
 <div class="col-xs-12">
+{{#if errors}}
+  <h3>Errors occured</h3>
+  {{#each errors}}
+    <p>Path: {{path}}</p>
+    <p>Message: {{message}}</p>
+    <hr />
+  {{/each}}
+{{/if}}
+
   <form name="create-post" action="/authors" method="post">
   <div class="form-group">
     <label>First name</label>
