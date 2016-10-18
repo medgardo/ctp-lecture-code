@@ -1,0 +1,19 @@
+
+<div class="row">
+<div class="col-xs-12">
+<h1>Authors List</h1>
+<a href="/authors">Authors List</a> |
+<a href="/authors/new">Create an author</a>
+</div>
+</div>
+
+
+{{#each authors}}
+<div class="row">
+  <div class="col-xs-12">
+  <h2>{{first_name}} {{last_name}}</h2>
+  <p>{{bio}}</p>
+  <hr />
+  </div>
+</div>
+{{/each}}
