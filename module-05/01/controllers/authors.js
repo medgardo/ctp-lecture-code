@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
   models.Author.findAll({})
     .then(function (authors) {
       if (authors != null) {
-        res.send('Authors List: <br /><pre>' + JSON.stringify(authors, null, 4) + '</pre>');
+        res.render('authors/list', {authors: authors});
       } else {
         res.send('No Authors found');
       }
